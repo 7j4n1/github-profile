@@ -71,6 +71,16 @@
 
             \curl_setopt($this->_ch, \CURLOPT_URL, $url);
         }
+
+        public function exec()
+        {
+            $response = \curl_exec($this->_ch);
+
+            if (\curl_error($this_ch))
+                throw new \RuntimeException("Api request failed: " . curl_error($this->_ch));
+    
+            return $response;
+        }
     }
     
 

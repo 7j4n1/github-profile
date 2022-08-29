@@ -70,6 +70,10 @@
                 $url = $url . '?' . http_build_query($this->_getParam);
 
             \curl_setopt($this->_ch, \CURLOPT_URL, $url);
+
+            $response = $this->exec();
+
+            return $this->getResponse();
         }
 
         public function exec()

@@ -25,7 +25,8 @@
             {
                 $this->_ch = \curl_init();
             }catch(\Exception $e){
-
+                throw new \Exception("cURL cannot be initiated. Check if cURL is enabled.");
+                
             }
         }
     }

@@ -45,7 +45,18 @@
         }
         public function setParams($method, $values, $json = true)
         {
-            # code...
+            if ($method == "get") {
+                $this->_getParam = $values;
+            }elseif ($method == "post") {
+                $this->_postParam = $values;
+
+                \curl_setopt($this->_ch, \CURLOPT_PORT, true);
+                if ($json) {
+                    \curl_setopt($this->_ch, \CURLOPT_PORT, json_encode($this->_postParam));
+                }else {
+                    \curl_setopt($this->_ch, \CURLOPT_PORT, http_build_query($this->_postParam));
+                }
+            }
         }
     }
     

@@ -76,6 +76,16 @@
             return $this->getResponse();
         }
 
+        public function post($url)
+        {
+            \curl_setopt($this->_ch, \CURLOPT_URL, $url);
+            \curl_setopt($this->_ch, \CURLOPT_CUSTOMREQUEST, "POST");
+
+            $response = $this->exec();
+
+            return $this->getResponse($response);
+        }
+
         public function exec()
         {
             $response = \curl_exec($this->_ch);

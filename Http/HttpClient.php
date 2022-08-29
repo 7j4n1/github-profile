@@ -58,6 +58,19 @@
                 }
             }
         }
+
+        /**
+         * Function for GET Method
+         * if the 'GET' parameters are set,
+         * construct GET query
+         */
+        public function get($url)
+        {
+            if(isset($this->_getParam))
+                $url = $url . '?' . http_build_query($this->_getParam);
+
+            \curl_setopt($this->_ch, \CURLOPT_URL, $url);
+        }
     }
     
 

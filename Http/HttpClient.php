@@ -81,6 +81,19 @@
     
             return $response;
         }
+
+        public function getResponse($response)
+        {
+            $status = \curl_getinfo($this->_ch, \CURLINFO_HTTP_CODE);
+
+            $response1 = json_decode($response, true, 512, JSON_BIGINT_AS_STRING);
+
+            if (($status !== 200) || ($status !== 401)) {
+                throw new \Exception("Error Occured with status code(".$status.")");
+            }
+
+            return $response1;
+        }
     }
     
 

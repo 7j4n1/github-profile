@@ -35,6 +35,18 @@
             \curl_setopt($this->_ch, \CURLOPT_RETURNTRANSFER, true);
             \curl_setopt($this->_ch, \CURLOPT_ENCODING, "");
         }
+
+        /**
+         *  Function to set cURL Headers
+         */
+        public function setHeaders($header)
+        {
+            \curl_setopt($this->_ch, \CURLOPT_HTTPHEADER, $header);
+        }
+        public function setParams($method, $values, $json = true)
+        {
+            # code...
+        }
     }
     
 

@@ -26,8 +26,14 @@
                 $this->_ch = \curl_init();
             }catch(\Exception $e){
                 throw new \Exception("cURL cannot be initiated. Check if cURL is enabled.");
-                
             }
+
+            /**
+             * If curl_init() successfully initiated
+             * set cURL options
+             */
+            \curl_setopt($this->_ch, \CURLOPT_RETURNTRANSFER, true);
+            \curl_setopt($this->_ch, \CURLOPT_ENCODING, "");
         }
     }
     

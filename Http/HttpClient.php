@@ -94,6 +94,11 @@
 
             return $response1;
         }
+
+        public function __destruct()
+        {
+            \curl_close($this->_ch);
+        }
     }
     
 
